@@ -12,8 +12,9 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import NightShelterIcon from "@mui/icons-material/NightShelter";
+import { useNavigate } from "react-router-dom";
 
-const pages = ["Hostels", "Rooms", "Contact", "About Us"];
+const pages = ["Hostels", "Rooms", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function AppBarMenu(props) {
@@ -27,13 +28,21 @@ function AppBarMenu(props) {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  // const handleCloseNavMenu = (pageprop) => {
+  //   console.log("Clicked the button" + { pageprop });
+  //   // setAnchorElNav(null);
+  // };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const navigate = useNavigate();
+
+  const navigateHostels = () => {
+    navigate("/");
+    console.log("nevigate working");
+  };
+
   return (
     <div>
       <AppBar position="static" style={{ background: "#00ADB5" }}>
@@ -61,72 +70,53 @@ function AppBarMenu(props) {
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
+              {/* <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleOpenNavMenu}
+                // onClick={handleOpenNavMenu}
                 color="inherit"
               >
                 <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+              </IconButton> */}
+              <Menu id="menu-appbar">
+                {/* {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu(page)}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
-                ))}
+                ))} */}
+                <MenuItem onClick={navigateHostels}>
+                  <Typography textAlign="center">Hostels</Typography>
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/rooms")}>
+                  <Typography textAlign="center">Rooms</Typography>
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/contact")}>
+                  <Typography textAlign="center">Contact</Typography>
+                </MenuItem>
               </Menu>
             </Box>
-            <NightShelterIcon
-              sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-            />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              LOGO
-            </Typography>
+
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page}
-                </Button>
-              ))}
+              <Button
+                onClick={() => navigate("/")}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Hostels
+              </Button>
+              <Button
+                onClick={() => navigate("/rooms")}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Rooms
+              </Button>
+              <Button
+                onClick={() => navigate("/contact")}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Contact
+              </Button>
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
