@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
 .App-logo {
@@ -35,4 +36,52 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.bottombar {
+  padding: 5% 10%;
+  color: #f9f7f7;
+  background-color: #00adb5;
+}
+
+ul {
+  text-align: left;
+  list-style: none;
+  padding-left: 0px;
+}
+
+.bottomHeading {
+  text-align: left;
+}
+
+.mainpagecontent {
+  padding: 5%;
+  margin: 2% 0%;
+  background-color: #f9f7f7;
+}
+
+.mainpagealter {
+  padding: 5%;
+  margin: 2% 0%;
+}
+
+.hostelimg {
+  width: 85%;
+}
+
+.contentheading {
+  text-align: left;
+  color: #00adb5;
+}
+
+.hostelcontent {
+  text-align: justify;
+}
+
+.contentsubtitle {
+  color: #222831;
+}
+
+.appbartop {
+  background-color: #00adb5;
 }
